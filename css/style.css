@@ -1,0 +1,128 @@
+/* RESETANDO */
+*, *::after, *::before {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+/* VARIÁVEIS */
+:root {
+    --main-bg-color: #11152c;
+    --menu-color: #0e164f;
+    --font-color-click: #6df772;
+    --sec-list-color: #949494;
+    --sec-list-color-hover: #828282;
+    --sec-list-color-active: #6b6b6b;
+}
+
+/* ESTILIZANDO BACKGROUND E INTERFACE */
+.interface {
+    min-height: 100vh;
+    background-color: var(--main-bg-color);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* GRID */
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10vw auto 10vw;
+    grid-template-areas:
+        "h"
+        "m"
+        "f";
+}
+
+
+/* ESTILIZANDO OS TÍTULOS */
+h1 {
+    font-size: 3em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h2 {
+    font-size: 1.7em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 5px;
+}
+
+
+/* ESTILIZANDO AS LISTAS */
+.generic-list {
+    list-style: none;
+}
+
+
+.sec-menu {
+    display: none;
+    flex-flow: column wrap;
+    font-size: 18pt;
+    position: absolute;
+    top: 100%;
+    border-radius: 5px;
+    color: white;
+
+    background-color: var(--sec-list-color);
+}
+.sec-menu li:hover {
+    background-color: var(--sec-list-color-hover);
+}
+.sec-menu li:active {
+    background-color: var(--sec-list-color-active);
+}
+
+.menu-list {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 25pt;
+    border-radius: 10px;
+    position: relative;
+
+    background: var(--menu-color);
+}
+.menu-list li {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.menu li.has-sec:focus-within > menu {
+    display: block;
+    pointer-events: all;
+}
+.menu li.has-children:focus-within {
+    pointer-events: none;
+    color: var(--font-color-click);
+}
+
+.menu-list li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.menu-list li:hover a {
+    color: var(--font-color-click);
+}
+
+/* FLEXBOX DO CABEÇALHO, CORPO E RODAPÉ */
+.semantic-div {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* CABEÇALHO */
+header {
+    grid-area: h;
+}
+
+/* CORPO */
+main {
+    grid-area: m;
+}
+
+/* FOOTER */
+footer {
+    grid-area: f;
+}
