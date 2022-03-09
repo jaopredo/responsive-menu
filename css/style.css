@@ -11,6 +11,8 @@
     --main-bg-color: #11152c;
     --menu-color: #0e164f;
     --font-color-click: #6df772;
+    --menu-hover: #6df772;
+    --menu-click: #48a54b;
     --sec-list-color: #949494;
     --sec-list-color-hover: #828282;
     --sec-list-color-active: #6b6b6b;
@@ -26,7 +28,7 @@
     /* GRID */
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 10vw auto 10vw;
+    grid-template-rows: 20vh auto 20vh;
     grid-template-areas:
         "h"
         "m"
@@ -34,16 +36,26 @@
 }
 
 
+
 /* ESTILIZANDO OS TÍTULOS */
 h1 {
-    font-size: 3em;
+    font-size: 1.7em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 h2 {
-    font-size: 1.7em;
+    font-size: 1.2em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-top: 5px;
+}
+
+
+/* FLEXBOX DO CABEÇALHO, CORPO E RODAPÉ */
+.semantic-div {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -52,30 +64,35 @@ h2 {
     list-style: none;
 }
 
-
 .sec-menu {
     display: none;
     flex-flow: column wrap;
-    font-size: 18pt;
+    font-size: 1em;
     position: absolute;
     top: 100%;
     border-radius: 5px;
     color: white;
+    width: fit-content;
 
     background-color: var(--sec-list-color);
 }
+.sec-menu li {
+    width: 100%;
+}
 .sec-menu li:hover {
+    border-radius: 5px;
     background-color: var(--sec-list-color-hover);
+    cursor: pointer;
 }
 .sec-menu li:active {
     background-color: var(--sec-list-color-active);
 }
 
+
 .menu-list {
-    display: flex;
-    flex-flow: row wrap;
-    font-size: 25pt;
-    border-radius: 10px;
+    display: none;
+    flex-flow: column wrap;
+    font-size: 1em;
     position: relative;
 
     background: var(--menu-color);
@@ -103,14 +120,6 @@ h2 {
     color: var(--font-color-click);
 }
 
-/* FLEXBOX DO CABEÇALHO, CORPO E RODAPÉ */
-.semantic-div {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: center;
-}
-
 
 /* CABEÇALHO */
 header {
@@ -125,4 +134,46 @@ main {
 /* FOOTER */
 footer {
     grid-area: f;
+}
+
+
+/* ICONE MENU */
+#menu-icon {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+#menu-icon-container {
+   padding: 5px;
+   background-color: var(--menu-color);
+}
+#menu-icon-container:hover {
+    background-color: var(--menu-hover);
+    cursor: pointer;
+}
+#menu-icon-container:active {background-color: var(--menu-click);}
+
+/* DESKTOP QUERIE */
+@media only screen and (min-width: 768px) {
+    /* ESTILIZANDO OS TÍTULOS */
+    h1 {font-size: 3em;}
+    h2 {font-size: 1.7em;}
+
+    /* CONFIGURANDO O ÍCONE */
+    #menu-icon-container {
+        display: none;
+    }
+
+    /* CONFIGURANDO O MENU */
+    .menu-list {
+        display: flex;
+        flex-flow: row wrap;
+        border-radius: 10px;
+
+        font-size: 1.1em;
+    }
 }
